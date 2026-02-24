@@ -38,7 +38,7 @@ function renderizarPeliculas(peliculas) {
                 <h3>${peli.Title}</h3>
                 <p>${peli.Year}</p>
                 <button class="btn-info" data-id="${peli.imdbID}">Más info</button>
-                <button class="btn-fav" data-peli='${JSON.stringify(peli)}'>⭐ Favorito</button>
+                <button class="btn-fav" data-peli='${JSON.stringify(peli)}'>Favorito</button>
             </div>
         `;
         contenedorResultados.appendChild(tarjeta);
@@ -72,7 +72,7 @@ function abrirModal(peli) {
                 <p><strong>Género:</strong> ${peli.Genre}</p>
                 <p><strong>Sinopsis:</strong> ${peli.Plot}</p>
                 <p><strong>Actores:</strong> ${peli.Actors}</p>
-                <p><strong>Rating:</strong> ⭐ ${peli.imdbRating}</p>
+                <p><strong>Rating:</strong> ${peli.imdbRating}</p>
             </div>
         </div>
     `;
@@ -86,7 +86,7 @@ function actualizarFavoritosUI() {
     listaFavoritosUI.innerHTML = favoritos.map(p => `
         <div class="fav-item" style="border-bottom: 1px solid #ccc; padding: 5px; display: flex; justify-content: space-between;">
             <span>${p.Title}</span>
-            <button onclick="borrarFavorito('${p.imdbID}')">❌</button>
+            <button onclick="borrarFavorito('${p.imdbID}')">Eliminar</button>
         </div>
     `).join('');
 }
