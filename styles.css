@@ -1,0 +1,154 @@
+/* Variables para mantener el codigo limpio y facil de cambiar */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --bg-color: #f4f4f9;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header y Buscador */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+#search-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap; /* Para que sea responsivo en movil */
+}
+
+#search-form input, #search-form select, #search-form button {
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+}
+
+#search-form button {
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+#search-form button:hover {
+    background-color: #c0392b;
+}
+
+/* Layout Principal: Listado y Sidebar */
+main {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    flex: 1;
+}
+
+#results-container {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Grid automático responsivo */
+    gap: 1.5rem;
+}
+
+/* Tarjetas de Peliculas */
+.movie-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.movie-card-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Sidebar de Favoritos */
+#favorites-sidebar {
+    flex: 1;
+    background: #eee;
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 250px;
+}
+
+/* Estilos para el Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none; /* Se activa con JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Responsivo para Moviles*/
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    
+    #favorites-sidebar {
+        order: -1; /* Mover favoritos arriba en móvil */
+    }
+}
